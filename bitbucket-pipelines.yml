@@ -1,0 +1,17 @@
+pipelines:
+  branches:
+      master: 
+        - step:
+           name: Deploy to Production
+           deployment: production
+           script:
+             - pipe: atlassian/ssh-run:0.4.0
+               variables:
+                 SSH_USER: $SSH_USER
+                 SERVER: $FTP_HOST
+                 COMMAND: "sudo sh /var/www/react-front/deploy.sh"
+             
+                                                  
+
+                
+                 
